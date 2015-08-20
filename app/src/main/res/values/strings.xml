@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Resistor Scanner</string>
+
+    <string name="dialog_message">Position the blue line over the resistor\'s color bands with the tolerance band to the right.
+        The left border should align with the first band, the right one with the last band.
+        When you\'re ready press Scan.\n
+        However, do not scan the tolerance band!</string>
+    <string name="dialog_title">How to...</string>
+    <string name="dialog_ok">Got it!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_result_screen">ResultScreen</string>
+</resources>

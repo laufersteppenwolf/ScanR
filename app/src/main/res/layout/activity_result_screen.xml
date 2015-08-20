@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.laufersteppenwolf.resistorscanner.ResultScreen">
+
+    <TextView android:text="Result" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/result" />
+
+    <TextView
+        android:text="Occurrences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/occurrences"
+        android:layout_below="@+id/result"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan Again!"
+        android:id="@+id/reset"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView2"
+        android:layout_above="@+id/result"
+        android:layout_toStartOf="@+id/result"
+        android:background="@color/Chocolate" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView3"
+        android:layout_above="@+id/result"
+        android:layout_toEndOf="@+id/result"
+        android:background="@color/Chocolate" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView4"
+        android:layout_marginStart="40dp"
+        android:background="@color/Chocolate"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView1"
+        android:layout_marginEnd="35dp"
+        android:background="@color/Chocolate"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toStartOf="@+id/imageView2" />
+
+</RelativeLayout>
