@@ -1,6 +1,7 @@
 package com.laufersteppenwolf.resistorscanner;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;

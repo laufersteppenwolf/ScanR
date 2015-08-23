@@ -9,4 +9,7 @@
     <string name="dialog_ok">Got it!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_result_screen">ResultScreen</string>
+    <string name="title_activity_manual_detection">ManualDetection</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

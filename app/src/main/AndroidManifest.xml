@@ -40,6 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.laufersteppenwolf.resistorscanner.MainActivity" />
         </activity>
+        <activity
+            android:name=".ManualDetection"
+            android:label="@string/title_activity_manual_detection"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.laufersteppenwolf.resistorscanner.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

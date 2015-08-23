@@ -1,5 +1,6 @@
 package com.laufersteppenwolf.resistorscanner;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -60,18 +61,19 @@ public class ResistorImageProcessor {
     }
 
     public static int getColorFromKey(int key){
+        Context context = MainActivity.getContext();
         if (key == -1)
             return Color.TRANSPARENT;
-        int[] color = {R.color.Black, // 0
-                R.color.Brown,        // 1
-                Color.RED,            // 2
-                R.color.Orange,       // 3
-                Color.YELLOW,         // 4
-                Color.GREEN,          // 5
-                Color.BLUE,           // 6
-                R.color.Purple,       // 7
-                Color.GRAY,           // 8
-                Color.WHITE};         // 9
+        int[] color = {context.getResources().getColor(R.color.Black),  // 0
+                context.getResources().getColor(R.color.Brown),          // 1
+                Color.RED,                                              // 2
+                context.getResources().getColor(R.color.Orange),         // 3
+                Color.YELLOW,                                           // 4
+                Color.GREEN,                                            // 5
+                Color.BLUE,                                             // 6
+                context.getResources().getColor(R.color.Purple),         // 7
+                Color.GRAY,                                             // 8
+                Color.WHITE};                                           // 9
         return color[key];
     }
 

@@ -95,6 +95,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         setContentView(R.layout.activity_main);
         final ToggleButton flashSwitch = (ToggleButton) findViewById(R.id.flashSwitch);
         final ToggleButton modeSwitch = (ToggleButton) findViewById(R.id.modeSwitch);
+        final Button manualButton = (Button) findViewById(R.id.manualButton);
         final Button scan = (Button) findViewById(R.id.scan);
         resultIntent = new Intent(MainActivity.this, ResultScreen.class);
         mContext = this;
@@ -147,6 +148,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     fourBandMode = false;
                     setPreferences(FOUR_BAND_MODE, false);
                 }
+            }
+        });
+
+        manualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ManualDetection.class));
             }
         });
 
