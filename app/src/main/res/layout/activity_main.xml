@@ -46,5 +46,16 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode"
+        android:id="@+id/modeSwitch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textOff="3-Band-Mode"
+        android:textOn="4-Band-Mode"
+        android:checked="false" />
+
 
 </RelativeLayout>

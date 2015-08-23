@@ -22,16 +22,16 @@ public class ResistorImageProcessor {
 
     // HSV colour bounds
     private static final Scalar COLOR_BOUNDS[][] = {
-        { new Scalar(0, 0, 0),   new Scalar(180, 250, 50) },    // black
-        { new Scalar(0, 90, 10), new Scalar(15, 250, 100) },    // brown
-        { new Scalar(0, 0, 0),   new Scalar(0, 0, 0) },         // red (defined by two bounds)
-        { new Scalar(4, 100, 100), new Scalar(9, 250, 150) },   // orange
-        { new Scalar(20, 130, 100), new Scalar(30, 250, 160) }, // yellow
-        { new Scalar(45, 50, 60), new Scalar(72, 250, 150) },   // green
-        { new Scalar(80, 50, 50), new Scalar(106, 250, 150) },  // blue
-        { new Scalar(130, 40, 50), new Scalar(155, 250, 150) }, // purple
-        { new Scalar(0,0, 50), new Scalar(180, 50, 80) },       // gray
-        { new Scalar(0, 0, 90), new Scalar(180, 15, 140) }      // white
+        { new Scalar(0, 0, 0),   new Scalar(180, 250, 30) },    // black                            0
+        { new Scalar(0, 150, 70), new Scalar(20, 250, 120) },   // brown                            1
+        { new Scalar(0, 0, 0),   new Scalar(0, 0, 0) },         // red (defined by two bounds)      2
+        { new Scalar(6, 150, 150), new Scalar(10, 250, 250) },  // orange                           3
+        { new Scalar(20, 130, 100), new Scalar(30, 250, 160) }, // yellow                           4
+        { new Scalar(45, 50, 60), new Scalar(72, 250, 150) },   // green                            5
+        { new Scalar(110, 50, 50), new Scalar(130, 255, 255) }, // blue                             6
+        { new Scalar(130, 40, 50), new Scalar(155, 250, 150) }, // purple                           7
+        { new Scalar(0,0, 50), new Scalar(180, 50, 80) },       // gray                             8
+        { new Scalar(0, 0, 90), new Scalar(180, 15, 140) }      // white                            9
     };
 
     // red wraps around in HSV --> 2 ranges
@@ -64,14 +64,14 @@ public class ResistorImageProcessor {
             return Color.TRANSPARENT;
         int[] color = {R.color.Black, // 0
                 R.color.Brown,        // 1
-                R.color.Red,          // 2
+                Color.RED,            // 2
                 R.color.Orange,       // 3
-                R.color.Yellow,       // 4
-                R.color.Green,        // 5
-                R.color.Blue,         // 6
+                Color.YELLOW,         // 4
+                Color.GREEN,          // 5
+                Color.BLUE,           // 6
                 R.color.Purple,       // 7
-                R.color.Gray,         // 8
-                R.color.White};       // 9
+                Color.GRAY,           // 8
+                Color.WHITE};         // 9
         return color[key];
     }
 
@@ -82,7 +82,7 @@ public class ResistorImageProcessor {
         int rows = imageMat.rows();
 
 
-        Mat subMat = imageMat.submat(rows/2, rows/2+30, cols/2 - 50, cols/2 + 50);
+        Mat subMat = imageMat.submat(rows / 2, rows / 2 + 30, cols / 2 - 50, cols / 2 + 50);
         Mat filteredMat = new Mat();
         Imgproc.cvtColor(subMat, subMat, Imgproc.COLOR_RGBA2BGR);
         Imgproc.bilateralFilter(subMat, filteredMat, 5, 80, 80);
@@ -90,9 +90,8 @@ public class ResistorImageProcessor {
 
         findLocations(filteredMat);
 
-        Log.e("ResistorScanner", "Locations: " + _locationValues.size());  //TODO: Add mode switch
-        if(_locationValues.size() == 3)
-        {
+        Log.e("ResistorScanner", "Locations: " + _locationValues.size() + " 4-Band-Mode: " + MainActivity.fourBandMode);
+        if((_locationValues.size() == 3) && (!MainActivity.fourBandMode)) {
             int k_tens = _locationValues.keyAt(0);
             int k_units = _locationValues.keyAt(1);
             int k_power =_locationValues.keyAt(2);
@@ -117,7 +116,7 @@ public class ResistorImageProcessor {
             if(value <= 1e9)
                 Core.putText(imageMat, valueStr, new Point(10, 100), Core.FONT_HERSHEY_COMPLEX,
                              2, new Scalar(255, 0, 0, 255), 3);
-        } else if (_locationValues.size() == 4) {
+        } else if ((_locationValues.size() == 4) && (MainActivity.fourBandMode)) {
             int k_hundreds = _locationValues.keyAt(0);
             int k_tens = _locationValues.keyAt(1);
             int k_units = _locationValues.keyAt(2);

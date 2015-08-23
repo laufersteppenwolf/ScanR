@@ -30,11 +30,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public static final String INSTRUCTIONS_SHOWN = "instructions_shown";
     public static final String ZOOM_LEVEL = "zoom_level";
     public static final String TORCH_STATE = "torch_state";
+    public static final String FOUR_BAND_MODE = "four_band_mode";
 
     private ResistorCameraView _resistorCameraView;
     private ResistorImageProcessor _resistorProcessor;
     private static Context mContext;
     public static boolean torchState;
+    public static boolean fourBandMode;
     public static Intent resultIntent;
     public static Integer zoomLevel;
     public static SharedPreferences myPreferences;
@@ -55,6 +57,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         instructionsShown = myPreferences.getBoolean(INSTRUCTIONS_SHOWN, false);
         zoomLevel = myPreferences.getInt(ZOOM_LEVEL, 0);
         torchState = myPreferences.getBoolean(TORCH_STATE, true);
+        fourBandMode = myPreferences.getBoolean(FOUR_BAND_MODE, false);
     }
 
     public static void setPreferences(String key, Boolean value) {
@@ -91,6 +94,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ToggleButton flashSwitch = (ToggleButton) findViewById(R.id.flashSwitch);
+        final ToggleButton modeSwitch = (ToggleButton) findViewById(R.id.modeSwitch);
         final Button scan = (Button) findViewById(R.id.scan);
         resultIntent = new Intent(MainActivity.this, ResultScreen.class);
         mContext = this;
@@ -129,6 +133,19 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     _resistorCameraView.activateFlash(true);
                 } else {
                     _resistorCameraView.activateFlash(false);
+                }
+            }
+        });
+
+        modeSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (modeSwitch.isChecked()) {
+                    fourBandMode = true;
+                    setPreferences(FOUR_BAND_MODE, true);
+                } else {
+                    fourBandMode = false;
+                    setPreferences(FOUR_BAND_MODE, false);
                 }
             }
         });
