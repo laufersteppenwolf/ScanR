@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public static final String ZOOM_LEVEL = "zoom_level";
     public static final String TORCH_STATE = "torch_state";
     public static final String FOUR_BAND_MODE = "four_band_mode";
+    public static final String VERSION = "version";
+    public static final String NUMBER_OF_SCANS = "number_of_scans";
+    public static final String SAVE_TORCH_STATE = "save_torch_state";
+    public static final String DEFAULT_TORCH_STATE = "default_torch_state";
 
     private ResistorCameraView _resistorCameraView;
     private ResistorImageProcessor _resistorProcessor;
@@ -51,12 +57,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public static void initPreferences(){
         myPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         editor = myPreferences.edit();
+        setPreferences(VERSION, BuildConfig.VERSION_NAME); // Update the build version for About settings
     }
 
     private static void getPreferences() {
         instructionsShown = myPreferences.getBoolean(INSTRUCTIONS_SHOWN, false);
         zoomLevel = myPreferences.getInt(ZOOM_LEVEL, 0);
-        torchState = myPreferences.getBoolean(TORCH_STATE, true);
+        if (myPreferences.getBoolean(SAVE_TORCH_STATE, true)) {
+            torchState = myPreferences.getBoolean(TORCH_STATE, true);
+        } else {
+            torchState = myPreferences.getBoolean(DEFAULT_TORCH_STATE, false);
+        }
         fourBandMode = myPreferences.getBoolean(FOUR_BAND_MODE, false);
     }
 
@@ -70,9 +81,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         editor.apply();
     }
 
-    private static void setPreferences(String key, String value) {
+    public static void setPreferences(String key, String value) {
         editor.putString(key, value);
         editor.apply();
+    }
+
+    public static int getPreferenceForKey(String key, int defaultValue) {
+        return Integer.parseInt(myPreferences.getString(key, String.valueOf(defaultValue)));
+    }
+
+    public static boolean getPreferenceForKey(String key, boolean defaultValue) {
+        return myPreferences.getBoolean(key, defaultValue);
     }
 
     private BaseLoaderCallback _loaderCallback = new BaseLoaderCallback(this) {
@@ -92,13 +111,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
+        initPreferences();
         setContentView(R.layout.activity_main);
         final ToggleButton flashSwitch = (ToggleButton) findViewById(R.id.flashSwitch);
         final ToggleButton modeSwitch = (ToggleButton) findViewById(R.id.modeSwitch);
         final Button manualButton = (Button) findViewById(R.id.manualButton);
         final Button scan = (Button) findViewById(R.id.scan);
         resultIntent = new Intent(MainActivity.this, ResultScreen.class);
-        mContext = this;
 
         _resistorCameraView = (ResistorCameraView) findViewById(R.id.ResistorCameraView);
         _resistorCameraView.setVisibility(SurfaceView.VISIBLE);
@@ -107,7 +127,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         _resistorProcessor = new ResistorImageProcessor();
 
-        initPreferences();
+        //initPreferences();
         getPreferences();
 
         if(!instructionsShown)
@@ -195,5 +215,28 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     {
         super.onResume();
         _loaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

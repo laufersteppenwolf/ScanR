@@ -17,6 +17,8 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 
+import static com.laufersteppenwolf.resistorscanner.MainActivity.getPreferenceForKey;
+
 public class ResistorImageProcessor {
 
     private static final int NUM_CODES = 10;
@@ -44,7 +46,7 @@ public class ResistorImageProcessor {
     private SparseIntArray _locationValues = new SparseIntArray(4);
 
     static int counter = 0;
-    static int counterMax = 20;
+    static int counterMax = (int) getPreferenceForKey(MainActivity.NUMBER_OF_SCANS, 20);
     int value = 0;
     static int[] values = new int[counterMax];
     static int[] colorBands = new int[4]; //TODO: Don't just use the last color band combo but the correct one

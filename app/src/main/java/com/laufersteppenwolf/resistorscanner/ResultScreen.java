@@ -31,6 +31,7 @@ public class ResultScreen extends ActionBarActivity {
         int temp = 0;
         for (int i = 0; i < (a.length - 1); i++)
         {
+            Log.d("ResultScreen", "value[" + i + "]: " + a[i]);
             temp = a[i];
             tempCount = 0;
             for (int j = 1; j < a.length; j++)

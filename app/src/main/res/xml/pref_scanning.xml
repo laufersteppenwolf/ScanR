@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="number_of_scans"
+        android:title="@string/pref_title_number_of_scans"
+        android:defaultValue="20"
+        android:selectAllOnFocus="true"
+        android:inputType="number" />
+
+</PreferenceScreen>

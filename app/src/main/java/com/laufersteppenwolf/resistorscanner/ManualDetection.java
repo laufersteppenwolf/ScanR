@@ -1,5 +1,6 @@
 package com.laufersteppenwolf.resistorscanner;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -450,6 +451,7 @@ public class ManualDetection extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(ManualDetection.this, SettingsActivity.class));
             return true;
         }
 
