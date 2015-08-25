@@ -49,7 +49,7 @@ public class ResistorImageProcessor {
     static int counterMax = (int) getPreferenceForKey(MainActivity.NUMBER_OF_SCANS, 20);
     int value = 0;
     static int[] values = new int[counterMax];
-    static int[] colorBands = new int[4]; //TODO: Don't just use the last color band combo but the correct one
+    static int[] colorBands = new int[4];
     boolean valueSet = false;
     static boolean buttonStart = false;
 
@@ -64,7 +64,7 @@ public class ResistorImageProcessor {
 
     public static int getColorFromKey(int key){
         Context context = MainActivity.getContext();
-        if (key == -1)
+        if (key < 0)
             return Color.TRANSPARENT;
         int[] color = {context.getResources().getColor(R.color.Black),  // 0
                 context.getResources().getColor(R.color.Brown),          // 1

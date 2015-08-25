@@ -97,18 +97,65 @@ public class ResultScreen extends ActionBarActivity {
         resultTV.setText(resultStr);
         accuracyTV.setText(Double.toString(accuracy) + "%");
 
+        int length = String.valueOf(result).length();
+        int hundreds = -1;
+        int tens;
+        int units;
+        int power;
+        char[] digits = String.valueOf(result).toCharArray();
+
+        if (!MainActivity.fourBandMode) {
+            power = length - 2;
+            if (digits.length >= 2) {
+                if (digits.length >= 3) {
+                    int tempResult = result / ((int) Math.pow(10, power));
+                    units = tempResult % 10;
+                    tens = tempResult / 10 % 10;
+                } else {
+                    units = result % 10;
+                    tens = result / 10 % 10;
+                }
+            } else {
+                units = result % 10;
+                tens = 0;
+            }
+            Log.d("ResultScreen", "Tens: " + tens + " Units: " + units + " Power: " + power);
+        } else {
+            power = length - 3;
+            if (digits.length >= 3) {
+                if (digits.length >= 4) {
+                    int tempResult = result / ((int) Math.pow(10, power));
+                    units = tempResult % 10;
+                    tens = tempResult / 10 % 10;
+                    hundreds = tempResult / 100 % 10;
+                } else {
+                    units = result % 10;
+                    tens = result / 10 % 100;
+                    hundreds = result / 100 % 10;
+                }
+            } else if (digits.length == 2) {
+                units = result % 10;
+                tens = result / 10 % 10;
+                hundreds = 0;
+            } else {
+                units = result % 10;
+                tens = hundreds = 0;
+            }
+            Log.d("ResultScreen", "Hundreds: " + hundreds + " Tens: " + tens + " Units: " + units + " Power: " + power);
+        }
+
         // Set color bands
         Log.d("ResistorScanner", "colorBands[0]: " + colorBands[0]);
-        band1.setBackgroundColor(getColorFromKey(colorBands[0]));
+        band1.setBackgroundColor(getColorFromKey(hundreds));
 
         Log.d("ResistorScanner", "colorBands[1]: " + colorBands[1]);
-        band2.setBackgroundColor(getColorFromKey(colorBands[1]));
+        band2.setBackgroundColor(getColorFromKey(tens));
 
         Log.d("ResistorScanner", "colorBands[2]: " + colorBands[2]);
-        band3.setBackgroundColor(getColorFromKey(colorBands[2]));
+        band3.setBackgroundColor(getColorFromKey(units));
 
         Log.d("ResistorScanner", "colorBands[3]: " + colorBands[3]);
-        band4.setBackgroundColor(getColorFromKey(colorBands[3]));
+        band4.setBackgroundColor(getColorFromKey(power));
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
