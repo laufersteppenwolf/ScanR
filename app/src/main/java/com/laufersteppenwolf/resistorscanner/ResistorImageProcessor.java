@@ -50,12 +50,14 @@ public class ResistorImageProcessor {
     int value = 0;
     static int[] values = new int[counterMax];
     static int[] colorBands = new int[4];
-    boolean valueSet = false;
+    static boolean valueSet = false;
     static boolean buttonStart = false;
 
     public static void reset() {
+        counterMax = (int) getPreferenceForKey(MainActivity.NUMBER_OF_SCANS, 20);
         counter = 0;
         values = new int[counterMax];
+        valueSet = false;
     }
 
     public static int[] getValues() {
@@ -104,22 +106,27 @@ public class ResistorImageProcessor {
             colorBands[2] =_locationValues.get(k_power);
             colorBands[3] = -1;
 
-            valueSet = true;
+            if (_locationValues.get(k_power) < 7) {
+                valueSet = true;
 
-            value = 10*_locationValues.get(k_tens) + _locationValues.get(k_units);
-            value *= Math.pow(10, _locationValues.get(k_power));
+                value = 10 * _locationValues.get(k_tens) + _locationValues.get(k_units);
+                value *= Math.pow(10, _locationValues.get(k_power));
 
-            String valueStr;
-            if(value >= 1e3 && value < 1e6)
-                valueStr = String.valueOf(value/1e3) + " KOhm";
-            else if(value >= 1e6)
-                valueStr = String.valueOf(value/1e6) + " MOhm";
-            else
-                valueStr = String.valueOf(value) + " Ohm";
+                String valueStr;
+                if (value >= 1e3 && value < 1e6)
+                    valueStr = String.valueOf(value / 1e3) + " KOhm";
+                else if (value >= 1e6)
+                    valueStr = String.valueOf(value / 1e6) + " MOhm";
+                else
+                    valueStr = String.valueOf(value) + " Ohm";
 
-            if(value <= 1e9)
-                Core.putText(imageMat, valueStr, new Point(10, 100), Core.FONT_HERSHEY_COMPLEX,
-                             2, new Scalar(255, 0, 0, 255), 3);
+                if (value <= 1e9 && MainActivity.debuggingMode)
+                    Core.putText(imageMat, valueStr, new Point(10, 100), Core.FONT_HERSHEY_COMPLEX,
+                            2, new Scalar(255, 0, 0, 255), 3);
+            }else {
+                Log.d("ResistorScanner", "Power too high!");
+                valueSet = false;
+            }
         } else if ((_locationValues.size() == 4) && (MainActivity.fourBandMode)) {
             int k_hundreds = _locationValues.keyAt(0);
             int k_tens = _locationValues.keyAt(1);
@@ -144,12 +151,16 @@ public class ResistorImageProcessor {
                 else
                     valueStr = String.valueOf(value) + " Ohm";
 
-                if (value <= 1e9)
+                if (value <= 1e9 && MainActivity.debuggingMode)
                     Core.putText(imageMat, valueStr, new Point(10, 100), Core.FONT_HERSHEY_COMPLEX,
                             2, new Scalar(255, 0, 0, 255), 3);
             } else {
                 Log.d("ResistorScanner", "Power too high!");
+                valueSet = false;
             }
+        } else {
+                Log.d("ResistorScanner", "Not enough locations found!");
+                valueSet = false;
         }
 
         if (buttonStart && valueSet) {

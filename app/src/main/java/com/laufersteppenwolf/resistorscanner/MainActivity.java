@@ -37,12 +37,18 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public static final String NUMBER_OF_SCANS = "number_of_scans";
     public static final String SAVE_TORCH_STATE = "save_torch_state";
     public static final String DEFAULT_TORCH_STATE = "default_torch_state";
+    public static final String ADVANCED_RESULT_SCREEN = "advanced_result_screen";
+    public static final String DEBUG = "debug";
+    public static final String MODE = "mode";
+    public static final String BANDS = "bands";
+    public static final String ACCURACY = "accuracy";
 
     private ResistorCameraView _resistorCameraView;
     private ResistorImageProcessor _resistorProcessor;
     private static Context mContext;
     public static boolean torchState;
     public static boolean fourBandMode;
+    public static boolean debuggingMode;
     public static Intent resultIntent;
     public static Integer zoomLevel;
     public static SharedPreferences myPreferences;
@@ -69,6 +75,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             torchState = myPreferences.getBoolean(DEFAULT_TORCH_STATE, false);
         }
         fourBandMode = myPreferences.getBoolean(FOUR_BAND_MODE, false);
+        debuggingMode = myPreferences.getBoolean(DEBUG, false);
     }
 
     public static void setPreferences(String key, Boolean value) {
@@ -174,7 +181,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         manualButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ManualDetection.class));
+                Intent intent = new Intent(MainActivity.this, ManualDetection.class);
+                intent.putExtra(MODE, "manual");
+                startActivity(intent);
             }
         });
 
@@ -215,6 +224,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     {
         super.onResume();
         _loaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+        getPreferences();
+        ResistorImageProcessor.reset();
     }
 
     @Override

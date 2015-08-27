@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import static com.laufersteppenwolf.resistorscanner.ResistorImageProcessor.getColorFromKey;
 
 public class ManualDetection extends ActionBarActivity {
 
@@ -24,7 +27,9 @@ public class ManualDetection extends ActionBarActivity {
         final TextView textView = (TextView) findViewById(R.id.resultViewMan);
         double result;
 
-        if (band3 == -1) {
+        Log.d("ManualDetection", "Band1: " + band1 + " Band2: " + band2 + " Band3: " + band4 + " Band: " + band4);
+
+        if (band3 < 0) {
             result = ((band1 * 10) + band2) * band4;
         } else {
             result = ((band1 * 100) + (band2 * 10) + band3) * band4;
@@ -39,6 +44,13 @@ public class ManualDetection extends ActionBarActivity {
             resultStr = String.valueOf(result) + " Ohm";
 
         textView.setText(resultStr);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        ResistorImageProcessor.reset();
     }
 
     @Override
@@ -98,6 +110,41 @@ public class ManualDetection extends ActionBarActivity {
         final ImageView imageView38 = (ImageView) findViewById(R.id.imageView38);
         final ImageView imageView39 = (ImageView) findViewById(R.id.imageView39);
 
+        Intent intent = getIntent();
+
+        if (intent.getStringExtra(MainActivity.MODE).equals("scan")) {
+            int[] bands = intent.getIntArrayExtra(MainActivity.BANDS);
+            if (bands[3] < 0)
+                bands[3] = 0;
+            if (bands[0] == -1) {
+                imageViewResult1.setBackgroundColor(getColorFromKey(bands[1]));
+                band1 = bands[1];
+
+                imageViewResult2.setBackgroundColor(getColorFromKey(bands[2]));
+                band2 = bands[2];
+
+                imageViewResult3.setBackgroundColor(getColorFromKey(bands[0]));
+                band3 = bands[0];
+
+                imageViewResult4.setBackgroundColor(getColorFromKey(bands[3]));
+                band4 = bands[3];
+            } else {
+                imageViewResult1.setBackgroundColor(getColorFromKey(bands[0]));
+                band1 = bands[0];
+
+                imageViewResult2.setBackgroundColor(getColorFromKey(bands[1]));
+                band2 = bands[1];
+
+                imageViewResult3.setBackgroundColor(getColorFromKey(bands[2]));
+                band3 = bands[2];
+
+                imageViewResult4.setBackgroundColor(getColorFromKey(bands[3]));
+                band4 = bands[3];
+            }
+
+            String accuracy = intent.getStringExtra(MainActivity.ACCURACY); //TODO: handle accuracy
+            doCalc();
+        }
         // 1st Band
         imageView00.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -449,10 +496,13 @@ public class ManualDetection extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(ManualDetection.this, SettingsActivity.class));
-            return true;
+        switch (id) {
+            case android.R.id.home:
+                ResistorImageProcessor.reset();
+                return true;
+            case R.id.action_settings:
+                startActivity(new Intent(ManualDetection.this, SettingsActivity.class));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

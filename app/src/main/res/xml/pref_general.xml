@@ -1,14 +1,25 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference
-        android:key="save_torch_state"
-        android:title="@string/pref_title_save_torch_state"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:title="@string/pref_header_general">
 
-    <CheckBoxPreference
-        android:key="default_torch_state"
-        android:title="@string/pref_title_default_torch_state"
-        android:defaultValue="false"
-        android:enabled="false"/>
+        <CheckBoxPreference
+            android:key="save_torch_state"
+            android:title="@string/pref_title_save_torch_state"
+            android:defaultValue="true" />
 
+        <CheckBoxPreference
+            android:key="default_torch_state"
+            android:title="@string/pref_title_default_torch_state"
+            android:defaultValue="false"
+            android:enabled="false"/>
+
+        <SwitchPreference
+            android:key="advanced_result_screen"
+            android:title="@string/pref_title_advanced_result"
+            android:summaryOn="@string/pref_summary_advanced_result"
+            android:summaryOff="@string/pref_summary_advanced_result_off"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

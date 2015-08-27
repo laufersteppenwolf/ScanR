@@ -1,6 +1,7 @@
 package com.laufersteppenwolf.resistorscanner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.laufersteppenwolf.resistorscanner.MainActivity.getPreferenceForKey;
 import static com.laufersteppenwolf.resistorscanner.ResistorImageProcessor.colorBands;
 import static com.laufersteppenwolf.resistorscanner.ResistorImageProcessor.getColorFromKey;
 import static com.laufersteppenwolf.resistorscanner.ResistorImageProcessor.getValues;
@@ -94,9 +96,6 @@ public class ResultScreen extends ActionBarActivity {
         else
             resultStr = String.valueOf(result) + " Ohm";
 
-        resultTV.setText(resultStr);
-        accuracyTV.setText(Double.toString(accuracy) + "%");
-
         int length = String.valueOf(result).length();
         int hundreds = -1;
         int tens;
@@ -144,19 +143,30 @@ public class ResultScreen extends ActionBarActivity {
             Log.d("ResultScreen", "Hundreds: " + hundreds + " Tens: " + tens + " Units: " + units + " Power: " + power);
         }
 
-        // Set color bands
-        Log.d("ResistorScanner", "colorBands[0]: " + colorBands[0]);
-        band1.setBackgroundColor(getColorFromKey(hundreds));
+        if (getPreferenceForKey(MainActivity.ADVANCED_RESULT_SCREEN, true)) { //TODO: Add setting
+            int[] bands = {hundreds, tens, units, power};
+            Intent intent = new Intent(ResultScreen.this, ManualDetection.class);
+            intent.putExtra(MainActivity.MODE, "scan");
+            intent.putExtra(MainActivity.BANDS, bands);
+            intent.putExtra(MainActivity.ACCURACY, Double.toString(accuracy));
+            startActivity(intent);
+        } else {
+            resultTV.setText(resultStr);
+            accuracyTV.setText(Double.toString(accuracy) + "%");
 
-        Log.d("ResistorScanner", "colorBands[1]: " + colorBands[1]);
-        band2.setBackgroundColor(getColorFromKey(tens));
+            // Set color bands
+            Log.d("ResistorScanner", "colorBands[0]: " + colorBands[0]);
+            band1.setBackgroundColor(getColorFromKey(hundreds));
 
-        Log.d("ResistorScanner", "colorBands[2]: " + colorBands[2]);
-        band3.setBackgroundColor(getColorFromKey(units));
+            Log.d("ResistorScanner", "colorBands[1]: " + colorBands[1]);
+            band2.setBackgroundColor(getColorFromKey(tens));
 
-        Log.d("ResistorScanner", "colorBands[3]: " + colorBands[3]);
-        band4.setBackgroundColor(getColorFromKey(power));
+            Log.d("ResistorScanner", "colorBands[2]: " + colorBands[2]);
+            band3.setBackgroundColor(getColorFromKey(units));
 
+            Log.d("ResistorScanner", "colorBands[3]: " + colorBands[3]);
+            band4.setBackgroundColor(getColorFromKey(power));
+        }
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

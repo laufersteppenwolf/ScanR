@@ -21,5 +21,10 @@
     <string name="pref_title_number_of_scans">Number of valid scans before calculating final result</string>
     <string name="pref_title_default_torch_state">Torch on by default</string>
     <string name="pref_title_save_torch_state">Save the previous torch state</string>
+    <string name="pref_title_advanced_result">Use advanced Result Screen</string>
+    <string name="pref_summary_advanced_result">Allows direct modification of the color combo, but might require more performance</string>
+    <string name="pref_summary_advanced_result_off">Requires less performance but does not offer modification of the recognized color combo</string>
+    <string name="pref_title_debug">Debugging Mode</string>
+    <string name="pref_summary_debug">Show some debugging information while scanning</string>
 
 </resources>

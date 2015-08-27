@@ -43,7 +43,7 @@
         <activity
             android:name=".ManualDetection"
             android:label="@string/title_activity_manual_detection"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.laufersteppenwolf.resistorscanner.MainActivity" />
@@ -51,7 +51,8 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.laufersteppenwolf.resistorscanner.MainActivity" />
