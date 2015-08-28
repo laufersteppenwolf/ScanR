@@ -16,10 +16,14 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -37,10 +41,31 @@ import java.util.List;
  */
 public class SettingsActivity extends PreferenceActivity {
 
+    private static Toolbar toolbar;
+    private static String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+
+        title = getResources().getString(R.string.action_settings);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent().getParent().getParent();
+        toolbar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.settings_actionbar, root, false);
+        root.addView(toolbar, 0);
+        toolbar.setTitle(title);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     /**
@@ -184,6 +209,7 @@ public class SettingsActivity extends PreferenceActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
+            title = getString(R.string.pref_header_general);
 
             final CheckBoxPreference saveTorch = (CheckBoxPreference) findPreference(MainActivity.SAVE_TORCH_STATE);
             final CheckBoxPreference defaultTorch = (CheckBoxPreference) findPreference(MainActivity.DEFAULT_TORCH_STATE);
@@ -215,6 +241,7 @@ public class SettingsActivity extends PreferenceActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_scanning);
+            title = getString(R.string.pref_header_scanning);
 
             // Bind the summaries of EditText/List/Dialog/Ringtone preferences
             // to their values. When their values change, their summaries are
@@ -234,6 +261,7 @@ public class SettingsActivity extends PreferenceActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_about);
+            title = getString(R.string.pref_header_about);
 
             // Bind the summaries of EditText/List/Dialog/Ringtone preferences
             // to their values. When their values change, their summaries are
@@ -241,6 +269,7 @@ public class SettingsActivity extends PreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference(MainActivity.VERSION));
         }
+
     }
 
     protected boolean isValidFragment(String fragmentName) {

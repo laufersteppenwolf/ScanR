@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public static final String SAVE_TORCH_STATE = "save_torch_state";
     public static final String DEFAULT_TORCH_STATE = "default_torch_state";
     public static final String ADVANCED_RESULT_SCREEN = "advanced_result_screen";
+    public static final String SHOW_FPS = "show_fps";
     public static final String DEBUG = "debug";
     public static final String MODE = "mode";
     public static final String BANDS = "bands";
@@ -134,8 +135,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         _resistorProcessor = new ResistorImageProcessor();
 
-        //initPreferences();
         getPreferences();
+
+        if (getPreferenceForKey(SHOW_FPS, false))
+            _resistorCameraView.enableFpsMeter();
 
         if(!instructionsShown)
         {

@@ -16,5 +16,11 @@
             android:summary="@string/pref_summary_debug"
             android:defaultValue="false" />
 
+        <SwitchPreference
+            android:key="show_fps"
+            android:title="Show FPS while scanning"
+            android:summary="Shows a small overlay with the current FPS rate"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 </PreferenceScreen>
