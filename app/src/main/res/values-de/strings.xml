@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ScanR</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="author">Autor</string>
+    <string name="dialog_message">Platziere die blaue Linie über den Farbbändern des Widerstands mit dem Toleranzband rechts. Die linke Kante sollte bündig mit dem linken Band sein, die rechte mit dem rechten Band (Multiplikator). \n Wenn du bereit bist, einfach auf Scannen drücken. \n Aber auf keinen Fall das Toleranzband mit scannen!</string>
+    <string name="dialog_ok">Verstanden!</string>
+    <string name="github">Quellcode auf GitHub ansehen</string>
+    <string name="pref_header_about">Über</string>
+    <string name="pref_header_general">Generelles</string>
+    <string name="pref_header_scanning">Scanvorgang</string>
+    <string name="pref_summary_advanced_result">Erlaubt direkte Änderung der Farbkombination, benötigt aber unter Umständen mehr Leistung</string>
+    <string name="pref_summary_advanced_result_off">Benötigt weniger Leistung, erlaubt aber keine Änderung der erkannten Farbkombination</string>
+    <string name="pref_summary_debug">Zeigt Debugging Informationen während dem Scannen</string>
+    <string name="pref_title_advanced_result">Erweiterte Ergebnis-Anzeige</string>
+    <string name="pref_title_debug">Debugging Mode</string>
+    <string name="pref_title_default_torch_state">Taschenlampe standardmäßig Ein</string>
+    <string name="pref_title_number_of_scans">Anzahl erfolgreicher Scans bevor der Ermittlung des Ergebnisses</string>
+    <string name="pref_title_save_torch_state">Speichere den letzten Status der Taschenlampe</string>
+    <string name="title_activity_manual_detection">Manuelle Erfassung</string>
+    <string name="title_activity_result_screen">Ergebnis-Anzeige</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="unknown">Unbekannt</string>
+    <string name="version">Version</string>
+    <string name="xda_thread">XDA-Thread besuchen</string>
+    <string name="pref_summary_fps">Zeigt ein kleines Overlay mit der aktuellen FPS-Rate</string>
+    <string name="pref_title_fps">Zeige FPS-Rate beim Scannen</string>
+</resources>

@@ -5,7 +5,7 @@
         The left border should align with the first band, the right one with the last band.
         When you\'re ready press Scan.\n
         However, do not scan the tolerance band!</string>
-    <string name="dialog_title">How to...</string>
+    <string name="dialog_title" translatable="false">How to…</string>
     <string name="dialog_ok">Got it!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_result_screen">ResultScreen</string>
@@ -14,9 +14,11 @@
     <string name="version">Version</string>
     <string name="unknown">Unknown</string>
     <string name="author">Author</string>
-    <string name="author_text">Stefan Zimmer</string>
+    <string name="author_text" translatable="false">Stefan Zimmer</string>
     <string name="xda_thread">View XDA Thread</string>
     <string name="github">View source code on GitHub</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_header_general">General</string>
     <string name="pref_header_scanning">Scanning</string>
     <string name="pref_title_number_of_scans">Number of valid scans before calculating final result</string>
     <string name="pref_title_default_torch_state">Torch on by default</string>
@@ -26,5 +28,7 @@
     <string name="pref_summary_advanced_result_off">Requires less performance but does not offer modification of the recognized color combo</string>
     <string name="pref_title_debug">Debugging Mode</string>
     <string name="pref_summary_debug">Show some debugging information while scanning</string>
+    <string name="pref_title_fps">Show FPS while scanning</string>
+    <string name="pref_summary_fps">Shows a small overlay with the current FPS rate</string>
 
 </resources>
