@@ -273,7 +273,8 @@
                     android:layout_gravity="center"
                     android:background="@color/White"
                     android:clickable="false"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/Black" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
