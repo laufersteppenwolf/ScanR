@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">ScanR</string>
+    <string name="app_name" translatable="false">ScanR</string>
 
     <string name="dialog_message">Position the blue line over the resistor\'s color bands with the tolerance band to the right.
         The left border should align with the first band, the right one with the last band.
         When you\'re ready press Scan.\n
         However, do not scan the tolerance band!</string>
-    <string name="dialog_title" translatable="false">How to…</string>
+    <string name="dialog_title">How to…</string>
     <string name="dialog_ok">Got it!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_result_screen">ResultScreen</string>
@@ -30,5 +30,14 @@
     <string name="pref_summary_debug">Show some debugging information while scanning</string>
     <string name="pref_title_fps">Show FPS while scanning</string>
     <string name="pref_summary_fps">Shows a small overlay with the current FPS rate</string>
+    <string name="three_band_mode">3-Band-Mode</string>
+    <string name="four_band_mode">4-Band-Mode</string>
+    <string name="manual">Manual</string>
+    <string name="mode">Mode</string>
+    <string name="scan">Scan</string>
+    <string name="flash">Flash</string>
+    <string name="flash_off">Flash Off</string>
+    <string name="flash_on">Flash On</string>
+    <string name="result">Result</string>
 
 </resources>

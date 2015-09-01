@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ScanR</string>
     <string name="action_settings">Einstellungen</string>
     <string name="author">Autor</string>
     <string name="dialog_message">Platziere die blaue Linie über den Farbbändern des Widerstands mit dem Toleranzband rechts. Die linke Kante sollte bündig mit dem linken Band sein, die rechte mit dem rechten Band (Multiplikator). \n Wenn du bereit bist, einfach auf Scannen drücken. \n Aber auf keinen Fall das Toleranzband mit scannen!</string>
@@ -25,4 +24,14 @@
     <string name="xda_thread">XDA-Thread besuchen</string>
     <string name="pref_summary_fps">Zeigt ein kleines Overlay mit der aktuellen FPS-Rate</string>
     <string name="pref_title_fps">Zeige FPS-Rate beim Scannen</string>
+    <string name="dialog_title">How to…</string>
+    <string name="three_band_mode">3-Band-Modus</string>
+    <string name="flash">Blitz</string>
+    <string name="flash_off">Blitz Aus</string>
+    <string name="flash_on">Blitz Ein</string>
+    <string name="four_band_mode">4-Band_Modus</string>
+    <string name="manual">Manuell</string>
+    <string name="mode">Modus</string>
+    <string name="scan">Scan</string>
+    <string name="result">Ergebnis</string>
 </resources>

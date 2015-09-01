@@ -30,18 +30,18 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flash"
+        android:text="@string/flash"
         android:id="@+id/flashSwitch"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:checked="true"
-        android:textOff="Flash Off"
-        android:textOn="Flash On" />
+        android:textOff="@string/flash_off"
+        android:textOn="@string/flash_on" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:text="Scan"
+        android:text="@string/scan"
         android:id="@+id/scan"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
@@ -49,18 +49,18 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mode"
+        android:text="@string/mode"
         android:id="@+id/modeSwitch"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textOff="3-Band-Mode"
-        android:textOn="4-Band-Mode"
+        android:textOff="@string/three_band_mode"
+        android:textOn="@string/four_band_mode"
         android:checked="false" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manual"
+        android:text="@string/manual"
         android:id="@+id/manualButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />

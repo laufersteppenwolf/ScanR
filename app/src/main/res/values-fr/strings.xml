@@ -1,0 +1,41 @@
+<resources>
+
+    <string name="dialog_message">Positionnez la ligne bleue sur les bandes de couleurs de la résistance avec la bande de tolérance à droite.
+    Le bord droit doit être aligné avec la première bande, celle de droite avec la dernière.
+    Quand vous êtes prêt, pressez \"Scanner\".\n
+    Cependant, ne scannez pas la bande de tolérance!</string>
+    <string name="dialog_title">Comment faire oâ€¦</string>
+    <string name="dialog_ok">J\'ai compris!</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_result_screen">Résultats</string>
+    <string name="title_activity_manual_detection">Détection manuelle</string>
+    <string name="pref_header_about">À propos</string>
+    <string name="version">Version</string>
+    <string name="unknown">Unknown</string>
+    <string name="author">Auteur</string>
+    <string name="xda_thread">Voir le sujet sur XDA</string>
+    <string name="github">Voir le code source sur GitHub</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="pref_header_general">Général</string>
+    <string name="pref_header_scanning">Scanning</string>
+    <string name="pref_title_number_of_scans">Nombres de scans valides avant calcul du résultat final</string>
+    <string name="pref_title_default_torch_state">LED active par défaut</string>
+    <string name="pref_title_save_torch_state">Conserver l\'état antérieur de la LED</string>
+    <string name="pref_title_advanced_result">Utiliser l\'écran de résultats avancés</string>
+    <string name="pref_summary_advanced_result">Permet la modification à la volée des couleurs reconnues, mais peut nécessiter plus de ressources</string>
+    <string name="pref_summary_advanced_result_off">Nécessite moins de ressources mais n\'offre pas la possibilité de modifier les couleurs reconnues</string>
+    <string name="pref_title_debug">Mode de débogage</string>
+    <string name="pref_summary_debug">Montrer des informations de débogage pendant le scan</string>
+    <string name="pref_title_fps">Montrer les images\/secondes lors du scan</string>
+    <string name="pref_summary_fps">Montre le nombre d\'images\/secondes lors des opérations de scan</string>
+    <string name="flash">Flash</string>
+    <string name="flash_off">Flash Off</string>
+    <string name="flash_on">Flash On</string>
+    <string name="four_band_mode">Mode 4 bandes</string>
+    <string name="manual">Manual</string>
+    <string name="mode">Mode</string>
+    <string name="scan">Scanner</string>
+    <string name="three_band_mode">Mode 3 Bandes</string>
+    <string name="result">Résultat</string>
+
+</resources>
