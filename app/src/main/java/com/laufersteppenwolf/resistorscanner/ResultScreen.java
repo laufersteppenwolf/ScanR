@@ -150,6 +150,7 @@ public class ResultScreen extends ActionBarActivity {
             intent.putExtra(MainActivity.BANDS, bands);
             intent.putExtra(MainActivity.ACCURACY, Double.toString(accuracy));
             startActivity(intent);
+            finish();
         } else {
             resultTV.setText(resultStr);
             accuracyTV.setText(Double.toString(accuracy) + "%");
