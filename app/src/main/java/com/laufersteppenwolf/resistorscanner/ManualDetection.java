@@ -113,8 +113,14 @@ public class ManualDetection extends ActionBarActivity {
         final ImageView imageView39 = (ImageView) findViewById(R.id.imageView39);
 
         Intent intent = getIntent();
+        String mode = intent.getStringExtra(MainActivity.MODE);
 
-        if (intent.getStringExtra(MainActivity.MODE).equals("scan")) {
+        if (mode == null) {
+            Log.e("ManualDetection", "Intent/mode == null!");
+            mode = "emulatorWorkaround";
+        }
+
+        if (mode.equals("scan")) {
             int[] bands = intent.getIntArrayExtra(MainActivity.BANDS);
             if (bands[3] < 0)
                 bands[3] = 0;
