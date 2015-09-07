@@ -23,7 +23,7 @@
             android:title="@string/xda_thread"
             android:icon="@drawable/logo_xda">
             <intent android:action="android.intent.action.VIEW"
-                android:data="http://forum.xda-developers.com/android/apps-games/app-cutcalc-simple-cutting-data-t3087223" />
+                android:data="http://forum.xda-developers.com/android/apps-games/app-scanr-simple-resistor-scanner-t3195228" />
         </Preference>
 
         <Preference
@@ -31,7 +31,7 @@
             android:title="@string/github"
             android:icon="@drawable/octocat">
             <intent android:action="android.intent.action.VIEW"
-                android:data="https://github.com/laufersteppenwolf/CutCalc" />
+                android:data="https://github.com/laufersteppenwolf/ScanR" />
         </Preference>
 
     </PreferenceCategory>
