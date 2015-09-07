@@ -26,7 +26,7 @@ public class ResistorImageProcessor {
     // HSV colour bounds
     private static final Scalar COLOR_BOUNDS[][] = {
         { new Scalar(0, 0, 0),   new Scalar(180, 250, 30) },    // black                            0
-        { new Scalar(0, 40, 20), new Scalar(20, 250, 100) },    // brown                            1
+        { new Scalar(0, 30, 20), new Scalar(20, 250, 100) },    // brown                            1
         { new Scalar(0, 0, 0),   new Scalar(0, 0, 0) },         // red (defined by two bounds)      2
         { new Scalar(6, 150, 150), new Scalar(10, 250, 250) },  // orange                           3
         { new Scalar(20, 130, 100), new Scalar(30, 250, 160) }, // yellow                           4
