@@ -35,7 +35,8 @@
         <activity
             android:name=".ResultScreen"
             android:label="@string/title_activity_result_screen"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.laufersteppenwolf.resistorscanner.MainActivity" />
@@ -43,7 +44,8 @@
         <activity
             android:name=".ManualDetection"
             android:label="@string/title_activity_manual_detection"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.laufersteppenwolf.resistorscanner.MainActivity" />
