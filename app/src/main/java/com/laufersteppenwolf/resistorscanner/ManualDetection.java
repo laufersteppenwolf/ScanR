@@ -32,7 +32,7 @@ public class ManualDetection extends ActionBarActivity {
         Log.d("ManualDetection", "Band1: " + band1 + " Band2: " + band2 + " Band3: " + band4 + " Band: " + band4);
 
         if (band3 < 0) {
-            result = ((band1 * 10) + band2) * Math.pow(10, band4);
+            result = ((band1 * 10) + band2) * band4;
         } else {
             result = ((band1 * 100) + (band2 * 10) + band3) * band4;
         }
