@@ -34,7 +34,7 @@ public class ManualDetection extends ActionBarActivity {
         if (band3 < 0) {
             result = ((band1 * 10) + band2) * Math.pow(10, band4);
         } else {
-            result = ((band1 * 100) + (band2 * 10) + band3) * Math.pow(10, band4);
+            result = ((band1 * 100) + (band2 * 10) + band3) * band4;
         }
 
         String resultStr;
