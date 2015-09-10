@@ -32,9 +32,9 @@ public class ManualDetection extends ActionBarActivity {
         Log.d("ManualDetection", "Band1: " + band1 + " Band2: " + band2 + " Band3: " + band4 + " Band: " + band4);
 
         if (band3 < 0) {
-            result = ((band1 * 10) + band2) * band4;
+            result = ((band1 * 10) + band2) * Math.pow(10, band4);
         } else {
-            result = ((band1 * 100) + (band2 * 10) + band3) * band4;
+            result = ((band1 * 100) + (band2 * 10) + band3) * Math.pow(10, band4);
         }
 
         String resultStr;
@@ -412,7 +412,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Silver));
-                band4 = 0.01;
+                band4 = -2;
                 doCalc();
             }
         });
@@ -420,7 +420,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Gold));
-                band4 = 0.1;
+                band4 = -1;
                 doCalc();
             }
         });
@@ -428,7 +428,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Black));
-                band4 = 1;
+                band4 = 0;
                 doCalc();
             }
         });
@@ -436,7 +436,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Brown));
-                band4 = 10;
+                band4 = 1;
                 doCalc();
             }
         });
@@ -444,7 +444,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Red));
-                band4 = 100;
+                band4 = 2;
                 doCalc();
             }
         });
@@ -452,7 +452,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Orange));
-                band4 = 1000;
+                band4 = 3;
                 doCalc();
             }
         });
@@ -460,7 +460,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Yellow));
-                band4 = 10000;
+                band4 = 4;
                 doCalc();
             }
         });
@@ -468,7 +468,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Green));
-                band4 = 100000;
+                band4 = 5;
                 doCalc();
             }
         });
@@ -476,7 +476,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Blue));
-                band4 = 1000000;
+                band4 = 6;
                 doCalc();
             }
         });
@@ -484,7 +484,7 @@ public class ManualDetection extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 imageViewResult4.setBackgroundColor(getResources().getColor(R.color.Purple));
-                band4 = 10000000;
+                band4 = 7;
                 doCalc();
             }
         });
