@@ -34,4 +34,5 @@
     <string name="mode">Modus</string>
     <string name="scan">Scan</string>
     <string name="result">Ergebnis</string>
+    <string name="toast_key_out_of_range">Es gab einen Fehler beim parsen der Farben für die Ergebnisanzeige. Bitte mach einen logcat und schicke ihn mir so dass ich den Fehler beheben kann.</string>
 </resources>

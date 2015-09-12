@@ -37,5 +37,6 @@
     <string name="scan">Scanner</string>
     <string name="three_band_mode">Mode 3 Bandes</string>
     <string name="result">Résultat</string>
+    <string name="toast_key_out_of_range">Une erreur est survenue lors de l\'analyse des couleurs pour l\'écran de résultats. Veuillez obtenir un logcat et me l\'envoyer pour que je puisse résoudre le problème, merci.</string>
 
 </resources>
