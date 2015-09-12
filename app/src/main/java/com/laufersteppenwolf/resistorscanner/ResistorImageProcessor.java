@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.util.SparseIntArray;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,13 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 
+import static com.laufersteppenwolf.resistorscanner.MainActivity.getContext;
 import static com.laufersteppenwolf.resistorscanner.MainActivity.getPreferenceForKey;
 
 public class ResistorImageProcessor {
 
     private static final int NUM_CODES = 10;
+    private static final String LOG_TAG = "ResistorImageProcessor";
 
     // HSV colour bounds
     private static final Scalar COLOR_BOUNDS[][] = {
@@ -68,6 +71,13 @@ public class ResistorImageProcessor {
         Context context = MainActivity.getContext();
         if (key < 0)
             return Color.TRANSPARENT;
+        if (key > 9) {
+            Log.e(LOG_TAG, "Key is out of range! Cannot get color for key: " + key);
+            Toast.makeText(getContext(),
+                    getContext().getString(R.string.toast_key_out_of_range),
+                    Toast.LENGTH_LONG).show();
+            return Color.TRANSPARENT;
+        }
         int[] color = {context.getResources().getColor(R.color.Black),  // 0
                 context.getResources().getColor(R.color.Brown),          // 1
                 Color.RED,                                              // 2

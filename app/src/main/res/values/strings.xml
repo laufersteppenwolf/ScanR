@@ -39,5 +39,6 @@
     <string name="flash_off">Flash Off</string>
     <string name="flash_on">Flash On</string>
     <string name="result">Result</string>
+    <string name="toast_key_out_of_range">There was an error parsing the color for the result screen. Please grab a logcat of the issue and send it to me so I can fix it.</string>
 
 </resources>
